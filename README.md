@@ -10,6 +10,11 @@ ObRegisterCallbacks+945CB	call    MmVerifyCallbackFunctionCheckFlags
 MmVerifyCallbackFunction+9	call    MmVerifyCallbackFunctionCheckFlags -> KeRegisterBoundCallback+14	call    MmVerifyCallbackFunction
 ```
 
+# info
+
+PsSetCreateThreadNotifyRoutine calls directly into PspSetCreateThreadNotifyRoutine which registers a callback without check the function.
+PsSetCreateThreadNotifyRoutineEx calls into MmVerifyCallbackFunctionCheckFlags which checks the function. (PsSetCreateThreadNotifyRoutineEx) is pretty useless just use PsSetCreateThreadNotifyRoutine. little oversight from microsoft
+
 ```c
 #include <memory.hpp>
 #include <system.hpp>

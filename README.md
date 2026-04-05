@@ -1,4 +1,12 @@
-# register-callbacks-manual-mapped
+# register callbacks on manual mapped driver
+
+Up	p	PspSetCreateProcessNotifyRoutine:loc_799AB4	call    MmVerifyCallbackFunctionCheckFlags
+Up	p	PsSetCreateThreadNotifyRoutineEx+20	call    MmVerifyCallbackFunctionCheckFlags
+Up	p	ObRegisterCallbacks+106	call    MmVerifyCallbackFunctionCheckFlags
+Up	p	ObRegisterCallbacks+945CB	call    MmVerifyCallbackFunctionCheckFlags
+
+// not included
+p	MmVerifyCallbackFunction+9	call    MmVerifyCallbackFunctionCheckFlags -> Up	p	KeRegisterBoundCallback+14	call    MmVerifyCallbackFunction
 
 ```c
 #include <memory.hpp>
